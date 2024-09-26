@@ -19,12 +19,17 @@ class Task {
         $this->description = $description;
     }
 
+    public function setCategory($category) {
+        $this->category = $category;
+    }
+
     public function displayTask() {
         echo "ID: " . $this->id . "\n";
         echo "Title: " . $this->title . "\n";
         echo "Description: " . $this->description . "\n";
         echo "--------------------------\n";
     }
+
 }
 
 $tasks = [];
@@ -76,13 +81,30 @@ function deleteTask(&$tasks) {
     }
 }
 
+function taskCategories(&$tasks) {
+    $id = readline("Enter Task ID to update: ");
+    $function = readline("Enter: work, home, personal");
+
+    if (isset($tasks[$id])) {
+        $newCategory = readline("Enter New category: ");
+        $id = count($tasks) + 1;
+        $tasks[$id]->setCategory($newCategory);
+
+        echo "Task Updated.\n";
+    } else {
+        echo "Task ID not found.\n";
+    }
+
+}
+
 while (true) {
     echo "\nToDo List CLI Application\n";
     echo "1. Create Task\n";
     echo "2. View All Tasks\n";
     echo "3. Update Task\n";
     echo "4. Delete Task\n";
-    echo "5. Exit\n";
+    echo "5. Categorize task\n";
+    echo "7. Exit\n";
     echo "Choose an option: ";
     $choice = trim(fgets(STDIN));
 
@@ -100,6 +122,9 @@ while (true) {
             deleteTask($tasks);
             break;
         case 5:
+            taskCategories($task);
+            break;
+        case 7:
             exit("Goodbye!\n");
         default:
             echo "Invalid option. Please try again.\n";
