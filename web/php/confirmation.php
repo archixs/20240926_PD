@@ -8,9 +8,13 @@
 </head>
 <body>
     
-    <?php
-    echo("<h1>Apsveicam </h1>")
 
+    <?php
+    // echo("To be implemented");
+
+    // var_dump($_POST);
+
+    echo($_POST['name']. ", Jūs esat reģistrejies webināram ar e-pastu: ". $_POST['email']);
     ?>
 </body>
 </html>

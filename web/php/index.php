@@ -3,61 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form</title>
 </head>
 <body>
+    <a href="blog.php">Blogs</a>
+
     <h1>Piesakies webināram!</h1>
-    <div>
-        <form action="webinars" method="post">
-            <label for="name">Vārds</label>
-            <input type="text" name="name">
+    
+    <form action="/confirmation.php" method="POST">
+        <label for="name">Vārds:</label>
+        <input type="text" name="name" id="name"><br>
 
-            <br>
+        <label for="name">Email:</label>
+        <input type="email" name="email" id="email"><br>
 
-            <label for="name">E-pasts</label>
-            <input type="text" name="name">
+        <select name="level">
+            <option value="">--Lūdzu izvēlies līmeni--</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
 
-            <br>
+        <legend>Vai vēlies saņemt blablabla?</legend>
+        <input type="radio" id="info_yes" name="info_choice" value="yes" />
+        <label for="info_yes">Yes</label>
 
-            <label for="limenis">Izvelies kursa līmeni</label>
-            <select name="limenis" id="level">
-                <option value="beg">Beginner</option>
-                <option value="int">Intermediate</option>
-                <option value="adv">Advanced</option>
-            </select>
+        <input type="radio" id="info_no" name="info_choice" value="no" />
+        <label for="info_no">No</label>
 
-            <br>
+        <br>
+        <input type="submit" value="Sūtīt">
+    </form>
 
-            <label for="radio">Vai vēlies saņemt info par citiem mūsu organizētajiem pasākumiem?</label>
-            <label><input type="radio" name="radio" value="yes" /> Yes</label>
-            <label><input type="radio" name="radio" value="no" /> No</label>
-
-            <br>
-        
-
-            <a href="confirmation.php"><input type="button" value="Nosūtīt" ></a>
-        </form>
-    </div>
-
-    <a href="blog.php">Uz blogu!</a>
-
-    <br>
-
-    <script src="app.js"></script>
-
-    <h2>Jau reģistrējušies</h2>
     <?php
 
-    $lietotaji = [
-        ["vards" => "Deniss", "epasts" => "fibigs@gmail.com", "limenis" => "Advanced"],
-        ["vards" => "Niks", "epasts" => "indriksons@gmail.com", "limenis" => "Intermediate"],
-        ["vards" => "Ernests", "epasts" => "art@gmail.com", "limenis" => "Beginner"]
-    ];
-    foreach($lietotaji as $data) {
-        echo("Vārds: " . $data["vards"] . ", E-pasts: " . $data["epasts"] . ", Līmenis: " . $data["limenis"]);
-        echo("<br>");
-    }
+        $masivs = [1, 2, 3];
+        
+        $asoc_masivs = [
+            'name' => 'arkoms',
+            'email' => 'bam@gmail.com'
+        ];
 
+        $names =[
+            ["name" => "Janis", "email" => "somemail@renars.lv", "level" => "Beginner"],
+            ["name" => "Antra", "email" => "somemail@antra.lv", "level" => "Intermediate"],
+            ["name" => "John", "email" => "somemail@john.lv", "level" => "Advanced"],
+        ];
+
+        foreach($names as $name){
+            echo "Vārds: "
+                . $name["name"]
+                . ", E-pasts: "
+                . $name["email"]
+                . ", Līmenis: "
+                . $name["level"]
+                . "<br>";
+        }
     ?>
+
+    <script src="app.js"></script>
 </body>
 </html>
